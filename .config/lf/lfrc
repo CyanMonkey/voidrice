@@ -120,7 +120,6 @@ cmd moveto ${{
 		mv -iv "$x" "$destpath"
 	done &&
 	notify-send "🚚 File(s) moved." "File(s) moved to $destpath."
-
 }}
 
 cmd copyto ${{
