@@ -91,7 +91,6 @@ cmd delete ${{
 	[ $ans = "y" ] && rm -rf -- $fx
 }}
 
-
 cmd moveto ${{
 	set -f
 	while true; do
@@ -116,8 +115,9 @@ cmd moveto ${{
 	echo "$fx" | sed 's/^/   /'
 	printf "To:\n   %s\n\n\tmove?[y/N]" "$destpath"
 	read -r ans
+	[ "$ans" != "y" ] && exit
 	for x in $fx; do
-		mv -iv \"$x\" \"$destpath\"
+		mv -iv "$x" "$destpath"
 	done &&
 	notify-send "🚚 File(s) moved." "File(s) moved to $destpath."
 
@@ -147,8 +147,9 @@ cmd copyto ${{
 	echo "$fx" | sed 's/^/   /'
 	printf "To:\n   %s\n\n\tcopy?[y/N]" "$destpath"
 	read -r ans
+	[ "$ans" != "y" ] && exit
 	for x in $fx; do
-		cp -iv \"$x\" \"$destpath\"
+		cp -ivr "$x" "$destpath"
 	done &&
 	notify-send "📋 File(s) copied." "File(s) copied to $destpath."
 }}
