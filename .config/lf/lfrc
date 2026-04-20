@@ -117,7 +117,7 @@ cmd moveto ${{
 	printf "To:\n   %s\n\n\tmove?[y/N]" "$destpath"
 	read -r ans
 	for x in $fx; do
-		eval mv -iv \"$x\" \"$destpath\"
+		mv -iv \"$x\" \"$destpath\"
 	done &&
 	notify-send "🚚 File(s) moved." "File(s) moved to $destpath."
 
@@ -148,9 +148,9 @@ cmd copyto ${{
 	printf "To:\n   %s\n\n\tcopy?[y/N]" "$destpath"
 	read -r ans
 	for x in $fx; do
-		eval cp -iv \"$x\" \"$destpath\"
+		cp -iv \"$x\" \"$destpath\"
 	done &&
-	notify-send "🗒️ File(s) copied." "File(s) copied to $destpath."
+	notify-send "📋 File(s) copied." "File(s) copied to $destpath."
 }}
 
 cmd setbg "$1"
